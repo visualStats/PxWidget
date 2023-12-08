@@ -350,6 +350,7 @@ pxWidget.map.compile = function (id) {
         if (pxWidget.draw.params[id].geojson) {
             pxWidget.map.geojson[id] = pxWidget.draw.params[id].geojson;
             pxWidget.map.addValues(id);
+            debugger
             return isValidData;
         }
         else {
