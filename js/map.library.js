@@ -345,24 +345,34 @@ pxWidget.map.compile = function (id) {
     pxWidget.map.jsonstat[id] = pxWidget.draw.params[id].data.datasets[0].api.response ? new pxWidget.JSONstat.jsonstat(pxWidget.draw.params[id].data.datasets[0].api.response) : null;
 
     if (pxWidget.map.jsonstat[id] && pxWidget.map.jsonstat[id].length) {
-        // Run the Ajax call
-        pxWidget.jQuery.ajax({
-            url: pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
-            method: 'GET',
-            dataType: 'json',
-            async: false,
-            success: function (response) {
-                if (typeof response != "object") {
-                    response = JSON.parse(response)
+        debugger
+        //check first does snippet come with geojson
+        if (pxWidget.draw.params[id].geojson) {
+            pxWidget.map.geojson[id] = pxWidget.draw.params[id].geojson;
+            pxWidget.map.addValues(id);
+            debugger
+            return isValidData;
+        }
+        else {
+            // Run the Ajax call
+            pxWidget.jQuery.ajax({
+                url: pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
+                method: 'GET',
+                dataType: 'json',
+                async: false,
+                success: function (response) {
+                    if (typeof response != "object") {
+                        response = JSON.parse(response)
+                    }
+                    pxWidget.map.geojson[id] = response;
+                    pxWidget.map.addValues(id);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    pxWidget.draw.error(id, 'pxWidget.map.compile: invalid geoJSON url');
                 }
-                pxWidget.map.geojson[id] = response;
-                pxWidget.map.addValues(id);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                pxWidget.draw.error(id, 'pxWidget.map.compile: invalid geoJSON url');
-            }
-        });
-        return isValidData;
+            });
+            return isValidData;
+        }
     } else {
         pxWidget.draw.error(id, 'pxWidget.map.compile: invalid data response');
         isValidData = false;
