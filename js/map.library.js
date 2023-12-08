@@ -347,7 +347,7 @@ pxWidget.map.compile = function (id) {
     if (pxWidget.map.jsonstat[id] && pxWidget.map.jsonstat[id].length) {
         // Run the Ajax call
         pxWidget.jQuery.ajax({
-            url: pxWidget.draw.params[id].map || pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
+            url: pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
             method: 'GET',
             dataType: 'json',
             async: false,
