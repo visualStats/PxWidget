@@ -345,12 +345,10 @@ pxWidget.map.compile = function (id) {
     pxWidget.map.jsonstat[id] = pxWidget.draw.params[id].data.datasets[0].api.response ? new pxWidget.JSONstat.jsonstat(pxWidget.draw.params[id].data.datasets[0].api.response) : null;
 
     if (pxWidget.map.jsonstat[id] && pxWidget.map.jsonstat[id].length) {
-        debugger
         //check first does snippet come with geojson
         if (pxWidget.draw.params[id].geojson) {
             pxWidget.map.geojson[id] = pxWidget.draw.params[id].geojson;
             pxWidget.map.addValues(id);
-            debugger
             return isValidData;
         }
         else {
