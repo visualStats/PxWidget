@@ -485,7 +485,7 @@ pxWidget.table.loadCSS = function (id) {
         pxWidget.load(window, document, 'script', 'https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js', null, null, true);
 
         // pxWidget - Datatable - Bootstrap
-        pxWidget.load(window, document, 'link', pxWidget.root + (pxWidget.debug ? 'css/datatable.bootstrap.css' : 'css/datatable.bootstrap.min.css'));
+        pxWidget.load(window, document, 'link', pxWidget.root + 'css/datatable.bootstrap.css');
     }
     else {
         // Default css and responsive cc for datatables 
