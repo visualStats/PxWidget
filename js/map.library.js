@@ -345,7 +345,7 @@ pxWidget.map.compile = function (id) {
     pxWidget.map.jsonstat[id] = pxWidget.draw.params[id].data.datasets[0].api.response ? new pxWidget.JSONstat.jsonstat(pxWidget.draw.params[id].data.datasets[0].api.response) : null;
 
     if (pxWidget.map.jsonstat[id] && pxWidget.map.jsonstat[id].length) {
-
+        debugger
         // Run the Ajax call
         pxWidget.jQuery.ajax({
             url: pxWidget.draw.params[id].options.geojson || pxWidget.map.jsonstat[id].Dimension(pxWidget.draw.params[id].mapDimension).link.enclosure[0].href,
