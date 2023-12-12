@@ -3,7 +3,7 @@ PxWidget - ISOGRAM
 *******************************************************************************/
 // Init
 var pxWidget = pxWidget || {};
-pxWidget.root = 'https://cdn.jsdelivr.net/gh/visualStats/PxWidget@1.0.3/';
+pxWidget.root = 'https://cdn.jsdelivr.net/gh/visualStats/PxWidget@1.0.6/';
 
 
 (function (i, s, o, g, r, a, m) {
